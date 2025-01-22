@@ -59,3 +59,6 @@ npm run test:e2e
 ```sh
 npm run lint
 ```
+
+Icons authors
+<a href="https://www.flaticon.com/ru/free-icons/-" title="дизайн логотипа иконки">Дизайн логотипа иконки от Freepik - Flaticon</a>
