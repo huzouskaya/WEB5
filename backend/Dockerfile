@@ -1,10 +1,11 @@
-FROM python:3.9-slim
+FROM python:3.10-slim
 
 WORKDIR /app
 
 COPY requirements.txt .
-RUN pip install requirements.txt
+RUN pip install -r requirements.txt
 
 COPY . .
 
-CMD ["gunicorn", "bind", "0.0.0.0:8000", "project.wsgi:application"]
+CMD ["gunicorn", "backend.wsgi:application", "--bind", "0.0.0.0:8000"]
+# CMD ["gunicorn", "bind", "0.0.0.0:8000", "project.wsgi:application"]

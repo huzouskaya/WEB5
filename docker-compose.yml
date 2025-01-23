@@ -10,7 +10,6 @@ services:
     volumes:
       - ./diary:/app
 
-
   backend:
     build:
       context: ./backend
@@ -22,12 +21,13 @@ services:
     depends_on:
       - redis
       - db
+    command: gunicorn your backend.wsgi:application --bind 0.0.0.0:8000
 
   redis:
-  image: redis:latest
-  ports:
-    - "6379:6379"
-  
+    image: redis:latest
+    ports:
+      - "6379:6379"
+
   db:
     image: postgres:13
     environment:
@@ -35,4 +35,4 @@ services:
       POSTGRES_PASSWORD: POSTGRESS_PASSWORD
       POSTGRES_DB: diary
     ports:
-      - "5432:5432" 
+      - "5432:5432"

@@ -7,6 +7,9 @@
       <nav class="nav">
         <router-link to="/" class="nav-link">Главная</router-link>
         <router-link to="/diary" class="nav-link">Дневник</router-link>
+        <template v-if="isAuthenticated">
+          <router-link to="/entry-editor" class="nav-link">Создать запись</router-link>
+        </template>
         <router-link to="/about" class="nav-link">О приложении</router-link>
       </nav>
       <div class="auth">
@@ -35,7 +38,7 @@
   const userAvatar = computed(() => authStore.avatar || '../assets/default-avatar.png'); // Получаем аватар из store
   
   const logout = () => {
-    authStore.logout(); // Вызываем метод выхода из store
+    authStore.logout();
   };
   </script>
   
@@ -45,13 +48,13 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #343a40; /* Темный фон */
-    color: white; /* Цвет текста */
-    position: fixed; /* Фиксированное положение */
-    top: 0; /* Вверху страницы */
-    left: 0; /* Слева */
-    right: 0; /* Справа */
-    z-index: 1000; /* Поверх других элементов */
+    background-color: #084b47;
+    color: rgba(77, 233, 225, 0.986);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
   }
   
   .logo {
@@ -60,7 +63,7 @@
   }
   
   .logo img {
-    width: 40px; /* Размер логотипа */
+    width: 40px;
     height: 40px;
     margin-right: 10px;
   }
@@ -72,13 +75,13 @@
   
   .nav-link {
     text-decoration: none;
-    color: white; /* Цвет ссылок */
-    transition: color 0.3s; /* Плавный переход цвета */
+    color: rgba(77, 233, 225, 0.986);
+    transition: color 0.5s;
   }
   
-  .nav-link:hover {
-    color: #007bff; /* Цвет при наведении */
-  }
+  /* .nav-link:hover {
+    color: rgba(17, 99, 95, 0.986);
+  } */
   
   .auth {
     display: flex;
@@ -92,7 +95,7 @@
   }
   
   .avatar {
-    width: 30px; /* Размер аватара */
+    width: 30px;
     height: 30px;
     border-radius: 50%;
     margin-right: 5px;
@@ -102,7 +105,7 @@
   .auth-link {
     background: none;
     border: none;
-    color: white; /* Цвет кнопки выхода и ссылок */
+    color: rgba(77, 233, 225, 0.986); /* Цвет кнопки выхода и ссылок */
     cursor: pointer;
     text-decoration: underline;
   }
