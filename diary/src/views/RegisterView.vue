@@ -43,7 +43,7 @@ const isPasswordStrong = (password: string): boolean => {
 
 const register = async () => {
   if (!isPasswordStrong(password.value)) {
-    errorMessage.value = 'Пароль должен содержать минимум 8 символов, включая заглавные и строчные буквы, цифры и специальные символы.';
+    errorMessage.value = 'Пароль - минимум 8 символов (заглавные и строчные буквы, цифры и спецсимволы)';
     return; // Прерываем выполнение, если пароль не надежный
   }
   try {
@@ -70,7 +70,7 @@ const register = async () => {
 
 <style scoped>
 .registration-container {
-  max-width: 400px;
+  max-width: 280px;
   margin: 0 auto;
   padding: 20px;
   border: 1px solid #084b47;
@@ -78,6 +78,7 @@ const register = async () => {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   background-color: rgba(77, 233, 225, 0.986);
   z-index: 3;
+  margin-top: 80px;
 }
 
 h2 {

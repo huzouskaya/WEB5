@@ -39,17 +39,79 @@
       }
   
       const data = await response.json();
-      console.log(data); // Успешный вход
-      // Здесь можно сохранить токен и перенаправить пользователя на страницу дневника
+      console.log(data);
     } catch (error) {
-      errorMessage.value = "Ошибочка вышла" // Отображение ошибки
+      errorMessage.value = "Ошибочка вышла"
     }
   };
   </script>
   
+
   <style scoped>
-  /* Ваши стили */
-  .error {
-    color: red;
+  .login-container {
+    display: flex; /* Добавлено для центрирования содержимого */
+    flex-direction: column; /* Вертикальное выравнивание */
+    justify-content: center; /* Центрирование по вертикали */
+    align-items: center; /* Центрирование по горизонтали */
+    max-width: 400px;
+    margin: 20 auto;
+    padding: 20px;
+    border: 1px solid #084b47;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(77, 233, 225, 0.986);
+    z-index: 3;
+    margin-top: 80px;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: medium;
+    color: #084b47;
+  }
+
+  .registration-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #084b47;
+  }
+
+  .form-input {
+    color: #084b47;
+    padding: 10px;
+    border: 1px solid #084b47;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+
+  .form-input:focus {
+    border-color: rgba(77, 233, 225, 0.986);
+    outline: none;
+  }
+
+  .submit-button {
+    padding: 10px;
+    background-color: #084b47;
+    color: rgba(77, 233, 225, 0.986);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    /* align-items: center;
+    justify-content: center; */
+  }
+
+  .submit-button:hover {
+    background-color: rgba(17, 99, 95, 0.986);
   }
   </style>

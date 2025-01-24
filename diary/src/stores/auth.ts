@@ -5,10 +5,12 @@ export const useAuthStore = defineStore('auth', {
     token: null as string | null, 
     username: null as string | null,
     avatar: null as string | null,
+    isAuthenticated: false,
   }),
   actions: {
     setToken(token: string) {
       this.token = token;
+      this.isAuthenticated = !!token;
     },
     setUser (username: string, avatar: string) {
       this.username = username;
@@ -18,6 +20,7 @@ export const useAuthStore = defineStore('auth', {
       this.token = null;
       this.username = null;
       this.avatar = null;
+      this.isAuthenticated = false;
     },
   },
 });

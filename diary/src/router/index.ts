@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
-import DiaryView from '../views/DiaryView.vue'
+import Diary from '../components/Diary.vue'
 import { defineStore } from 'pinia'
 
 const router = createRouter({
@@ -32,7 +32,7 @@ const router = createRouter({
     {
       path: '/diary',
       name: 'Diary',
-      component: DiaryView,
+      component: Diary,
     },
   ],
 })
