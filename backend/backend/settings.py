@@ -37,8 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'corsheaders',
     'channels',
+    'app',
 ]
 
 MIDDLEWARE = [
@@ -138,7 +140,11 @@ CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
 
 ASGI_APPLICATION = 'backend.asgi.application'
 
+# CORS_ALLOW_ALL_ORIGINS = True 
+
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173", 
-    "http://localhost:3000", 
+    "http://localhost:3000",
 ]
+
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # Папка, куда будут собираться статические файлы

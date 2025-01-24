@@ -7,15 +7,15 @@ class DiaryEntrySerializer(serializers.ModelSerializer):
         model = DiaryEntry
         fields = ['id', 'title', 'content', 'created_at', 'updated_at']
 
-class UserSerializer(serializers.ModelSerializer):
-    password = serializers.CharField(write_only=True)
 
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('username', 'password')
+        fields = ['id', 'username', 'email', 'password']
+        extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
-        user = User(username=validated_data['username'],)
+        user = User(**validated_data)
         user.set_password(validated_data['password'])
         user.save()
         return user

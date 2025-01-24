@@ -1,4 +1,42 @@
+<!-- src/components/Login.vue -->
 <template>
+  <form @submit.prevent="login">
+      <input v-model="username" placeholder="Username" required />
+      <input v-model="password" type="password" placeholder="Password" required />
+      <button type="submit">Login</button>
+  </form>
+</template>
+
+<script>
+import axios from 'axios';
+
+export default {
+  data() {
+      return {
+          username: '',
+          password: ''
+      };
+  },
+  methods: {
+      async login() {
+          try {
+              const response = await axios.post('http://localhost:8000/login/', {
+                  username: this.username,
+                  password: this.password
+              });
+              console.log('Login successful:', response.data);
+              // Здесь вы можете сохранить токен или выполнить другие действия
+          } catch (error) {
+              console.error('Login error:', error.response.data);
+          }
+      }
+  }
+};
+</script>
+
+
+
+<!-- <template>
     <div class="login-container">
       <h2>Вход</h2>
       <form @submit.prevent="login" class="login-form">
@@ -114,4 +152,4 @@
   .submit-button:hover {
     background-color: rgba(17, 99, 95, 0.986);
   }
-  </style>
+  </style> -->

@@ -1,4 +1,52 @@
 <template>
+  <form @submit.prevent="register">
+      <input v-model="username" placeholder="Username" required />
+      <input v-model="email" type="email" placeholder="Email" required />
+      <input v-model="password" type="password" placeholder="Password" required />
+      <button type="submit">Register</button>
+  </form>
+</template>
+
+<script>
+import axios from 'axios';
+
+export default {
+  data() {
+      return {
+          username: '',
+          email: '',
+          password: '',
+      };
+  },
+  methods: {
+      async register() {
+          console.log('Register method called');  // Для отладки
+          try {
+              const response = await axios.post('http://localhost:8000/api/register/', {
+                  username: this.username,
+                  email: this.email,
+                  password: this.password,
+              });
+              console.log('User  registered:', response.data);
+          } catch (error) {
+              if (error.response) {
+                  console.error('Registration error:', error.response.data);
+              } else if (error.request) {
+                  console.error('No response received:', error.request);
+              } else {
+                  console.error('Error setting up request:', error.message);
+              }
+          }
+      }
+  },
+  mounted() {
+      console.log('Component mounted');  // Для отладки
+  }
+};
+</script>
+
+
+<!-- <template>
   <HeaderView />
   <div class="registration-container">
     <h2>Регистрация</h2>
@@ -129,4 +177,4 @@ label {
 .submit-button:hover {
   background-color: rgba(17, 99, 95, 0.986);
 }
-</style>
+</style> -->
