@@ -13,5 +13,8 @@
   ],
   "compilerOptions": {
     "module": "NodeNext"
-  }
+  },
+  "typeRoots": [
+  "./node_modules/@types",
+  ],
 }

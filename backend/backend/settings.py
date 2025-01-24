@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders'
+    'corsheaders',
     'channels',
 ]
 
@@ -129,7 +129,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTIFICATION_CLASSES': [
-        'rest_framework_simplejwt.authentification.JWTAuthentification',
+        'rest_framework_simplejwt.authentification.JWTAuthentication',
     ],
 }
 
@@ -137,3 +137,8 @@ CELERY_BROKER_URL = 'redis://redis:6379/0'
 CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
 
 ASGI_APPLICATION = 'backend.asgi.application'
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173", 
+    "http://localhost:3000", 
+]

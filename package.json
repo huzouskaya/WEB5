@@ -1,5 +1,9 @@
 {
   "dependencies": {
     "element-plus": "^2.9.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.10",
+    "typescript": "^5.7.3"
   }
 }
