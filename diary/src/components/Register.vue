@@ -22,7 +22,7 @@ export default {
     methods: {
         async register() {
             try {
-                const response = await axios.post('http://localhost:8000/register/', {
+                const response = await axios.post('http://localhost:8000/api/users/register/', {
                     username: this.username,
                     email: this.email,
                     password: this.password

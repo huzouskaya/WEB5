@@ -22,7 +22,7 @@ export default {
       async register() {
           console.log('Register method called');  // Для отладки
           try {
-              const response = await axios.post('http://localhost:8000/api/register/', {
+              const response = await axios.post('http://localhost:8000/api/users/register/', {
                   username: this.username,
                   email: this.email,
                   password: this.password,
