@@ -39,7 +39,7 @@ const login = () => {
   justify-content: center; /* Центрирование по вертикали */
   align-items: center; /* Центрирование по горизонтали */
   max-width: 400px;
-  margin: 20 auto;
+  margin: 20px auto;
   padding: 20px;
   border: 1px solid #084b47;
   border-radius: 8px;
@@ -52,7 +52,6 @@ const login = () => {
 h2 {
   text-align: center;
   margin-bottom: 20px;
-  font-weight: medium;
   color: #084b47;
 }
 
@@ -67,7 +66,6 @@ h2 {
 
 label {
   margin-bottom: 5px;
-  font-weight: bold;
   color: #084b47;
 }
 

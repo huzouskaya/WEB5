@@ -7,4 +7,6 @@ RUN npm install
 
 COPY . .
 
+RUN ls -la /app 
+
 CMD ["npm", "run", "dev"]

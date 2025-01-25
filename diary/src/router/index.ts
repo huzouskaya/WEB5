@@ -3,15 +3,15 @@ import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import Diary from '../components/Diary.vue'
-import Register from '../components/Register.vue';
-import Login from '../components/Login.vue';
+// import Register from '../components/Register.vue';
+// import Login from '../components/Login.vue';
 import { defineStore } from 'pinia'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    { path: '/app/register', component: Register },
-    { path: '/app/login', component: Login },
+    // { path: '/app/register', component: Register },
+    // { path: '/app/login', component: Login },
     {
       path: '/',
       name: 'home',

@@ -1,4 +1,88 @@
 <template>
+  <div class="register-container">
+    <h2>Регистрация</h2>
+    <form @submit.prevent="register">
+      <div>
+        <label for="username">Имя пользователя:</label>
+        <input v-model="username" type="text" id="username" required />
+      </div>
+      <div>
+        <label for="email">Электронная почта:</label>
+        <input v-model="email" type="email" id="email" required />
+      </div>
+      <div>
+        <label for="password">Пароль:</label>
+        <input v-model="password" type="password" id="password" required />
+      </div>
+      <button type="submit">Зарегистрироваться</button>
+    </form>
+    <div v-if="errorMessage" class="error">{{ errorMessage }}</div>
+    <div v-if="successMessage" class="success">{{ successMessage }}</div>
+  </div>
+</template>
+
+<script>
+import axios from 'axios';
+
+export default {
+  data() {
+    return {
+      username: '',
+      email: '',
+      password: '',
+      errorMessage: '',
+      successMessage: '',
+    };
+  },
+  methods: {
+    async register() {
+      this.errorMessage = '';
+      this.successMessage = '';
+
+      try {
+        const response = await axios.post('http://backend:8000/api/users/register/', {
+          username: this.username,
+          email: this.email,
+          password: this.password,
+        });
+
+        // Обработка успешной регистрации
+        this.successMessage = 'Пользователь успешно зарегистрирован!';
+        console.log('User  registered:', response.data);
+      } catch (error) {
+        // Обработка ошибок
+        if (error.response) {
+          this.errorMessage = error.response.data.message || 'Ошибка регистрации';
+        } else {
+          this.errorMessage = 'Ошибка сети';
+        }
+        console.error('Registration error:', error);
+      }
+    },
+  },
+};
+</script>
+
+<style scoped>
+.register-container {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.error {
+  color: red;
+}
+
+.success {
+  color: green;
+}
+</style>
+
+
+<!-- <template>
   <form @submit.prevent="register">
       <input v-model="username" placeholder="Username" required />
       <input v-model="email" type="email" placeholder="Email" required />
@@ -11,39 +95,37 @@
 import axios from 'axios';
 
 export default {
-  data() {
-      return {
-          username: '',
-          email: '',
-          password: '',
-      };
-  },
-  methods: {
-      async register() {
-          console.log('Register method called');  // Для отладки
-          try {
-              const response = await axios.post('http://localhost:8000/api/users/register/', {
-                  username: this.username,
-                  email: this.email,
-                  password: this.password,
-              });
-              console.log('User  registered:', response.data);
-          } catch (error) {
-              if (error.response) {
-                  console.error('Registration error:', error.response.data);
-              } else if (error.request) {
-                  console.error('No response received:', error.request);
-              } else {
-                  console.error('Error setting up request:', error.message);
-              }
-          }
-      }
-  },
-  mounted() {
-      console.log('Component mounted');  // Для отладки
-  }
+    data() {
+        return {
+            username: '',
+            email: '',
+            password: '',
+        };
+    },
+    methods: {
+        async register() {
+            console.log('Register method called');  // Для отладки
+            try {
+                const response = await axios.post('http://localhost:8000/api/users/register/', {
+                    username: this.username,
+                    email: this.email,
+                    password: this.password,
+                });
+                console.log('User  registered:', response.data);
+            } catch (error) {
+                if (error.response) {
+                    console.error('Registration error:', error.response.data);
+                } else if (error.request) {
+                    console.error('No response received:', error.request);
+                } else {
+                    console.error('Error setting up request:', error.message);
+                }
+            }
+        }
+    }
 };
-</script>
+
+</script> -->
 
 
 <!-- <template>
